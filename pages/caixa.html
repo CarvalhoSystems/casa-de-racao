@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetShop POS - Sistema de Caixa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f3f4f6;
+      }
+      .cart-height {
+        height: calc(100vh - 350px);
+      }
+    </style>
+    <!--Favicon-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../img/favicon-96x96.png"
+      sizes="96x96"
+    />
+  </head>
+  <body class="h-screen flex flex-col">
+    <!-- Header -->
+    <header
+      class="bg-indigo-600 text-white p-4 flex justify-between items-center shadow-lg"
+    >
+      <div class="flex items-center gap-3">
+        <i class="fas fa-paw text-2xl text-yellow-400"></i>
+        <h1 class="text-xl font-bold tracking-tight">PET CAIXA v1.0</h1>
+      </div>
+      <div class="text-right">
+        <p class="text-xs opacity-80">
+          Operador: <span class="font-semibold">João Silva</span>
+        </p>
+        <p class="text-sm font-mono" id="current-time"></p>
+      </div>
+    </header>
+
+    <main class="flex-1 flex overflow-hidden p-4 gap-4">
+      <!-- Lado Esquerdo: Busca e Lista de Itens -->
+      <div class="flex-[2] flex flex-col gap-4">
+        <!-- Busca de Produto -->
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+          <div class="relative">
+            <i class="fas fa-barcode absolute left-4 top-4 text-gray-400"></i>
+            <input
+              type="text"
+              placeholder="Escaneie o código ou digite o nome do produto..."
+              class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-lg"
+            />
+          </div>
+          <div class="flex gap-2 mt-3">
+            <button
+              class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              <i class="fas fa-search mr-1"></i> Consultar Preço
+            </button>
+            <button
+              class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              <i class="fas fa-box mr-1"></i> Estoque
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabela de Itens -->
+        <div
+          class="bg-white rounded-xl shadow-sm border border-gray-200 flex-1 overflow-hidden flex flex-col"
+        >
+          <div
+            class="bg-gray-50 p-3 border-b border-gray-200 flex font-bold text-gray-600 text-sm"
+          >
+            <div class="w-12">#</div>
+            <div class="flex-1">PRODUTO</div>
+            <div class="w-24 text-center">QTD</div>
+            <div class="w-32 text-right">UN. (R$)</div>
+            <div class="w-32 text-right">TOTAL (R$)</div>
+          </div>
+
+          <div class="flex-1 overflow-y-auto cart-height" id="cart-items">
+            <!-- Exemplo de Item -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Lado Direito: Resumo e Pagamento -->
+      <div class="flex-1 flex flex-col gap-4">
+        <!-- Totais -->
+        <div class="bg-indigo-900 text-white p-6 rounded-xl shadow-md">
+          <div class="flex justify-between items-center mb-2 opacity-80">
+            <span>Subtotal:</span>
+            <span class="font-mono">R$ 159,90</span>
+          </div>
+          <div class="flex justify-between items-center mb-4 opacity-80">
+            <span>Desconto:</span>
+            <span class="font-mono text-green-400">- R$ 0,00</span>
+          </div>
+          <hr class="border-indigo-700 mb-4" />
+          <div class="text-sm uppercase tracking-widest opacity-70">
+            Total a Pagar
+          </div>
+          <div class="text-5xl font-black font-mono mt-1">R$ 0,00</div>
+          <div class="mt-4">
+            <span class="text-xs opacity-80">Itens no carrinho: </span>
+            <span class="font-bold" id="cart-count">0</span>
+        </div>
+
+        <!-- Teclado de Atalhos / Pagamento -->
+        <div
+          class="bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex-1 flex flex-col gap-3"
+        >
+          <p class="text-xs font-bold text-gray-400 uppercase mb-1">
+            Formas de Pagamento
+          </p>
+
+          <button
+            class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-bold flex justify-between px-6 items-center transition-transform active:scale-95"
+          >
+            <span><i class="fas fa-dollar-sign mr-2"></i> DINHEIRO (F1)</span>
+          </button>
+
+          <button
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg font-bold flex justify-between px-6 items-center transition-transform active:scale-95"
+          >
+            <span><i class="fas fa-credit-card mr-2"></i> CARTÃO (F2)</span>
+          </button>
+
+          <button
+            class="w-full bg-teal-500 hover:bg-teal-600 text-white py-4 rounded-lg font-bold flex justify-between px-6 items-center transition-transform active:scale-95"
+          >
+            <span><i class="fa-brands fa-pix mr-2"></i> PIX (F3)</span>
+          </button>
+
+          <div class="mt-auto grid grid-cols-2 gap-2">
+            <button
+              class="bg-red-100 text-red-600 p-3 rounded-lg text-sm font-bold hover:bg-red-200"
+            >
+              CANCELAR (ESC)
+            </button>
+            <button
+              class="bg-gray-100 text-gray-800 p-3 rounded-lg text-sm font-bold hover:bg-gray-800"
+            >
+              CPF NA NOTA
+            </button>
+            <button
+                class="bg-gray-100 text-red-600 p-3 rounded-lg text-sm font-bold hover:bg-red-200 backdrop-blur-sm col-span-2"
+                >
+                Finalizar Venda (F8)
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer de Atalhos -->
+    <footer
+      class="bg-white border-t border-gray-200 p-3 flex justify-around text-[10px] font-bold text-gray-500 uppercase"
+    >
+      <div>F1: Dinheiro</div>
+      <div>F2: Cartão</div>
+      <div>F3: Pix</div>
+      <div>F4: Pesquisar</div>
+      <div>F5: Quantidade</div>
+      <div>F8: Fechar Venda</div>
+      <div>F9: Desconto</div>
+      <div>ESC: Sair</div>
+    </footer>
+    <script type="module" src="../JS/caixa.js"></script>
+    <script type="module" src="../JS/pdv.js"></script>
+  </body>
+</html>

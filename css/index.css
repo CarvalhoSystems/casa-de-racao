@@ -1,0 +1,139 @@
+/*
+=================================
+ Inicio do Projeto  (Login Page)
+=================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+
+    background: url('/img/imagem.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    /* Alinha o conteúdo à direita como na imagem */
+    align-items: center;
+}
+
+.login-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-content {
+    width: 40%;
+    /* Ocupa o lado direito da tela */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.85);
+    /* Efeito de transparência suave */
+    backdrop-filter: blur(10px);
+    /* Desfoque no fundo (Glassmorphism) */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #34495e;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #5bb2a7;
+    /* Verde suave inspirado na pet shop */
+    box-shadow: 0 0 5px rgba(91, 178, 167, 0.3);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #5c849e;
+    /* Azul similar ao botão da imagem */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #4a6d84;
+}
+
+.footer-links {
+    margin-top: 25px;
+    font-size: 0.8rem;
+}
+
+.footer-links a {
+    color: #5bb2a7;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-links span {
+    display: block;
+    margin-top: 10px;
+    color: #95a5a6;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 768px) {
+    .login-content {
+        width: 100%;
+    }
+
+    .login-box {
+        background: rgba(255, 255, 255, 0.95);
+    }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Shop - Gerenciar Produtos</title>
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!--Favicon-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../img/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <!--Swal para notificações-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Font Awesome para ícones -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Cabeçalho do Dashboard -->
+      <header class="dashboard-header">
+        <div class="logo">
+          <h1>PetShop</h1>
+        </div>
+        <nav class="top-nav">
+          <ul>
+            <li><a href="/pages/dashboard.html">Início</a></li>
+            <li><a href="/pages/gerenciar-produtos.html">Produtos</a></li>
+            <li><a href="/pages/ver-pedidos.html">Pedidos</a></li>
+            <li><a href="/pages/clientes.html">Clientes</a></li>
+            <li><a href="/pages/caixa.html">Caixa</a></li>
+          </ul>
+        </nav>
+        <div class="user-profile">
+          <span>Olá, <span id="user-name"></span>!</span>
+          <button class="logout-btn" id="logout">Sair</button>
+        </div>
+      </header>
+
+      <!-- Barra Lateral de Navegação -->
+      <aside class="dashboard-sidebar">
+        <nav>
+          <ul>
+            <li>
+              <a href="/pages/dashboard.html"
+                ><i class="fas fa-home"></i> Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="/pages/gerenciar-produtos.html" class="active"
+                ><i class="fas fa-boxes"></i> Gerenciar Produtos</a
+              >
+            </li>
+            <li>
+              <a href="/pages/caixa.html"
+                ><i class="fas fa-cash-register"></i> Caixa</a
+              >
+            </li>
+            <li>
+              <a href="/pages/ver-pedidos.html"
+                ><i class="fas fa-shopping-cart"></i> Ver Pedidos</a
+              >
+            </li>
+            <li>
+              <a href="/pages/clientes.html"
+                ><i class="fas fa-users"></i> Clientes</a
+              >
+            </li>
+            <li>
+              <a href="/pages/relatorios.html"
+                ><i class="fas fa-chart-line"></i> Relatórios</a
+              >
+            </li>
+            <li>
+              <a href="/pages/configuracoes.html"
+                ><i class="fas fa-cog"></i> Configurações</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Conteúdo Principal do Dashboard -->
+      <main class="dashboard-main-content">
+        <h2>Gerenciar Produtos</h2>
+        <div class="content-section">
+          <p>Aqui você poderá adicionar, editar e remover produtos.</p>
+          <!-- Conteúdo específico para Gerenciar Produtos -->
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/JS/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,373 @@
+/* Variáveis de Cores Baseadas no Estilo do Projeto */
+:root {
+    --primary-color: #5bb2a7;
+    /* Verde suave da pet shop */
+    --secondary-color: #5c849e;
+    /* Azul dos botões */
+    --sidebar-bg: #2c3e50;
+    --bg-light: #f4f7f6;
+    --text-dark: #333;
+    --text-muted: #7f8c8d;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Layout Principal */
+.dashboard-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main";
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 70px 1fr;
+    height: 100vh;
+}
+
+/* Cabeçalho */
+.dashboard-header {
+    grid-area: header;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: var(--shadow);
+    z-index: 100;
+}
+
+.dashboard-header .logo h1 {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.top-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.top-nav a:hover {
+    color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-profile span {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Barra Lateral */
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: var(--sidebar-bg);
+    padding-top: 20px;
+}
+
+.dashboard-sidebar nav ul {
+    list-style: none;
+}
+
+.dashboard-sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.dashboard-sidebar nav a:hover,
+.dashboard-sidebar nav a.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    border-left-color: var(--primary-color);
+}
+
+/* Conteúdo Principal */
+.dashboard-main-content {
+    grid-area: main;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.dashboard-main-content h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: var(--sidebar-bg);
+}
+
+/* Widgets / Cards */
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.widget {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.widget:hover {
+    transform: translateY(-5px);
+}
+
+.widget h3 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.widget p {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 80px 1fr;
+    }
+
+    .dashboard-sidebar nav a span,
+    .top-nav {
+        display: none;
+    }
+
+    .dashboard-sidebar nav a {
+        justify-content: center;
+        padding: 20px;
+    }
+}
+
+/* --- Estilos Específicos do Caixa (PDV) --- */
+.pos-container {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    height: calc(100vh - 180px);
+}
+
+.product-selection,
+.cart-section {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.product-card:hover {
+    border-color: var(--primary-color);
+    background-color: #f9fdfc;
+    transform: scale(1.02);
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    margin: 15px 0;
+}
+
+.btn-finish {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 4px 0 #4a9188;
+    transition: all 0.1s;
+}
+
+.btn-finish:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+/* Ajustes para PDV Profissional */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--bg-light);
+    padding-bottom: 10px;
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.cart-labels {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.payment-methods {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.payment-methods h4 {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.pay-btn {
+    padding: 10px 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pay-btn.active {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+.main-total {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    border-top: 2px solid #eee;
+    padding-top: 10px;
+}
+
+.pos-shortcuts {
+    position: fixed;
+    bottom: 0;
+    left: 260px;
+    /* Alinhado após a sidebar */
+    right: 0;
+    background: #34495e;
+    color: white;
+    display: flex;
+    padding: 8px 30px;
+    gap: 30px;
+    font-size: 0.8rem;
+}
+
+.shortcut kbd {
+    background: #555;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 5px;
+    color: #f1c40f;
+    font-weight: bold;
+}
