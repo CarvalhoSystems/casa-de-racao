@@ -1,9 +1,39 @@
-/* --- Módulo de PDV (Caixa) Profissional --- */
+/* ==========================================================================
+   PDV UNIFICADO - Componentes do Ponto de Venda
+   ========================================================================== */
+
+/* --- Variáveis --- */
+:root {
+    --primary-color: #5bb2a7;
+    --primary-hover: #4a9188;
+    --secondary-color: #5c849e;
+    --bg-light: #f8fafb;
+    --text-dark: #2d3436;
+    --text-muted: #636e72;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base & Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* --- Layout do PDV --- */
 .pos-container {
     display: grid;
     grid-template-columns: 1fr 420px;
     gap: 25px;
-    height: calc(100vh - 200px);
+    padding: 20px;
 }
 
 .product-selection,
@@ -14,11 +44,6 @@
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-}
-
-.search-bar {
-    position: relative;
-    margin-bottom: 25px;
 }
 
 .search-bar input {
@@ -32,16 +57,13 @@
 
 .search-bar input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(91, 178, 167, 0.1);
 }
 
-/* Grid de Produtos no PDV */
 .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 20px;
     overflow-y: auto;
-    padding-right: 10px;
 }
 
 .product-card {
@@ -56,11 +78,9 @@
 
 .product-card:hover {
     border-color: var(--primary-color);
-    background-color: #f9fdfc;
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
-/* Carrinho e Finalização */
 .cart-header {
     display: flex;
     justify-content: space-between;
@@ -70,19 +90,13 @@
 }
 
 .main-total {
-    margin-top: auto;
+    margin-top: 20px;
     padding: 20px;
     background: #f0f9f8;
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid rgba(91, 178, 167, 0.2);
-}
-
-.main-total h4 {
-    font-size: 0.9rem;
-    color: var(--text-muted);
 }
 
 .main-total span {
@@ -102,11 +116,16 @@
     font-size: 1.2rem;
     cursor: pointer;
     margin-top: 15px;
-    box-shadow: 0 6px 0 var(--primary-hover);
     transition: var(--transition);
 }
 
-.btn-finish:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 var(--primary-hover);
+.btn-finish:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- Responsividade --- */
+@media (max-width: 1100px) {
+    .pos-container {
+        grid-template-columns: 1fr;
+    }
 }

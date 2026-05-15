@@ -1,0 +1,254 @@
+/* ==========================================================================
+   CAIXA UNIFICADO - Estilos para o Ponto de Venda
+   ========================================================================== */
+
+/* --- Variáveis --- */
+:root {
+    --primary-color: #5bb2a7;
+    --primary-hover: #4a9188;
+    --secondary-color: #5c849e;
+    --sidebar-bg: #2c3e50;
+    --sidebar-active: rgba(255, 255, 255, 0.1);
+    --bg-light: #f8fafb;
+    --text-dark: #2d3436;
+    --text-muted: #636e72;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base & Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d8e0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+    line-height: 1.6;
+}
+
+/* --- Layout Estrutural --- */
+.dashboard-container {
+    display: grid;
+    grid-template-areas: "sidebar header" "sidebar main";
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 70px 1fr;
+    height: 100vh;
+}
+
+.dashboard-header {
+    grid-area: header;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: var(--shadow-sm);
+    z-index: 10;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    color: white;
+}
+
+.dashboard-sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 30px;
+    color: #b2bec3;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.dashboard-sidebar nav a:hover,
+.dashboard-sidebar nav a.active {
+    background-color: var(--sidebar-active);
+    color: var(--white);
+    border-left: 4px solid var(--primary-color);
+}
+
+.dashboard-main-content {
+    grid-area: main;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* --- Módulo de PDV (Caixa) --- */
+.pos-container {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 25px;
+    height: calc(100vh - 200px);
+}
+
+.product-selection,
+.cart-section {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #edf2f7;
+    border-radius: 15px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-bar input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(91, 178, 167, 0.1);
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.product-card {
+    background: #fff;
+    border: 2px solid #f1f2f6;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    border-color: var(--primary-color);
+    background-color: #f9fdfc;
+    transform: translateY(-5px);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.main-total {
+    margin-top: auto;
+    padding: 20px;
+    background: #f0f9f8;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(91, 178, 167, 0.2);
+}
+
+.main-total span {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.btn-finish {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 6px 0 var(--primary-hover);
+    transition: var(--transition);
+}
+
+.btn-finish:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 var(--primary-hover);
+}
+
+/* --- Atalhos no Rodapé --- */
+.pos-shortcuts {
+    position: fixed;
+    bottom: 0;
+    left: 260px;
+    right: 0;
+    background: #2d3436;
+    color: #dfe6e9;
+    display: flex;
+    padding: 12px 40px;
+    gap: 40px;
+    font-size: 0.8rem;
+}
+
+.shortcut kbd {
+    background: #636e72;
+    padding: 3px 8px;
+    border-radius: 6px;
+    color: #ffeaa7;
+    font-family: monospace;
+    margin-right: 8px;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 1100px) {
+    .pos-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 80px 1fr;
+    }
+
+    .dashboard-sidebar nav a span {
+        display: none;
+    }
+
+    .dashboard-sidebar nav a {
+        justify-content: center;
+        padding: 25px;
+    }
+
+    .pos-shortcuts {
+        left: 80px;
+    }
+}

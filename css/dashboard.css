@@ -1,8 +1,332 @@
-@import url('./_variables.css');
-@import url('./_base.css');
-@import url('./_layout.css');
-@import url('./_header-nav.css');
-@import url('./dashboard-specific.css');
-@import url('./_pos.css');
-@import url('./_pos-shortcuts.css');
-@import url('./_media-queries.css');
+/* ==========================================================================
+   DASHBOARD UNIFICADO - Estilos Globais e Específicos do Painel
+   ========================================================================== */
+
+/* --- Variáveis --- */
+:root {
+    --primary-color: #5bb2a7;
+    --primary-hover: #4a9188;
+    --secondary-color: #5c849e;
+    --sidebar-bg: #2c3e50;
+    --sidebar-active: rgba(255, 255, 255, 0.1);
+    --bg-light: #f8fafb;
+    --text-dark: #2d3436;
+    --text-muted: #636e72;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base & Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d8e0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+    line-height: 1.6;
+}
+
+/* --- Layout Estrutural --- */
+.dashboard-container {
+    display: grid;
+    grid-template-areas: "sidebar header" "sidebar main";
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 70px 1fr;
+    height: 100vh;
+}
+
+.dashboard-header {
+    grid-area: header;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: var(--shadow-sm);
+    z-index: 10;
+}
+
+.dashboard-header .logo h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.dashboard-sidebar {
+    grid-area: sidebar;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+    color: white;
+}
+
+.dashboard-sidebar nav ul {
+    list-style: none;
+}
+
+.dashboard-sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 30px;
+    color: #b2bec3;
+    text-decoration: none;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.dashboard-sidebar nav a i {
+    font-size: 1.1rem;
+    width: 25px;
+}
+
+.dashboard-sidebar nav a:hover,
+.dashboard-sidebar nav a.active {
+    background-color: var(--sidebar-active);
+    color: var(--white);
+    border-left-color: var(--primary-color);
+}
+
+.dashboard-main-content {
+    grid-area: main;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* --- Navegação e Perfil --- */
+.top-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.top-nav a:hover {
+    color: var(--primary-color);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logout-btn {
+    background-color: #ff7675;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.logout-btn:hover {
+    background-color: #d63031;
+    transform: scale(1.05);
+}
+
+/* --- Dashboard Specific (KPIs e Gráficos) --- */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.welcome-text h2 {
+    font-size: 1.8rem;
+    color: var(--sidebar-bg);
+    margin-bottom: 5px;
+}
+
+.welcome-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.date-display {
+    background: var(--white);
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.date-display i {
+    color: var(--primary-color);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.stat-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.stat-icon.sales {
+    background: rgba(91, 178, 167, 0.1);
+    color: var(--primary-color);
+}
+
+.stat-icon.orders {
+    background: rgba(92, 132, 158, 0.1);
+    color: var(--secondary-color);
+}
+
+.stat-icon.stock {
+    background: rgba(255, 118, 117, 0.1);
+    color: #ff7675;
+}
+
+.stat-info h3 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--sidebar-bg);
+    margin-bottom: 5px;
+}
+
+.stat-trend {
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-trend.up {
+    color: #27ae60;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.dashboard-details {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+}
+
+.chart-container h3 {
+    margin-bottom: 30px;
+    font-size: 1.25rem;
+    color: var(--sidebar-bg);
+    font-weight: 600;
+}
+
+.placeholder-chart {
+    height: 350px;
+    background: #fdfdfd;
+    border: 2px dashed #edf2f7;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.placeholder-chart::after {
+    content: 'Área do Gráfico (Chart.js)';
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* --- Estilos Específicos para dashboard --- */
+
+/* --- Responsividade --- */
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 80px 1fr;
+    }
+
+    .dashboard-sidebar nav a span,
+    .top-nav,
+    .user-profile span {
+        display: none;
+    }
+
+    .dashboard-sidebar nav a {
+        justify-content: center;
+        padding: 25px;
+    }
+}
