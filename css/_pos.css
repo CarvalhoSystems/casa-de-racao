@@ -1,0 +1,112 @@
+/* --- Módulo de PDV (Caixa) Profissional --- */
+.pos-container {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 25px;
+    height: calc(100vh - 200px);
+}
+
+.product-selection,
+.cart-section {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.search-bar {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #edf2f7;
+    border-radius: 15px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-bar input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(91, 178, 167, 0.1);
+}
+
+/* Grid de Produtos no PDV */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.product-card {
+    background: #fff;
+    border: 2px solid #f1f2f6;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    border-color: var(--primary-color);
+    background-color: #f9fdfc;
+    transform: translateY(-5px);
+}
+
+/* Carrinho e Finalização */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.main-total {
+    margin-top: auto;
+    padding: 20px;
+    background: #f0f9f8;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(91, 178, 167, 0.2);
+}
+
+.main-total h4 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.main-total span {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.btn-finish {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 6px 0 var(--primary-hover);
+    transition: var(--transition);
+}
+
+.btn-finish:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 var(--primary-hover);
+}

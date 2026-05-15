@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Shop - Relatórios</title>
     <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/relatorios.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -90,11 +91,43 @@
       </aside>
 
       <!-- Conteúdo Principal do Dashboard -->
-      <main class="dashboard-main-content">
-        <h2>Relatórios</h2>
-        <div class="content-section">
-          <p>Visualize relatórios de vendas, estoque e clientes aqui.</p>
-          <!-- Conteúdo específico para Relatórios -->
+      <main class="dashboard-main">
+        <div class="reports-container">
+          <div class="report-cards">
+            <div class="card">
+              <i class="fas fa-wallet"></i>
+              <span>Vendas Hoje</span>
+              <h3>R$ 1.250,00</h3>
+            </div>
+          </div>
+
+          <div class="report-charts-grid">
+            <div class="chart-box">
+              <h4>Fluxo de Pagamentos</h4>
+              <canvas id="paymentChart"></canvas>
+            </div>
+            <div class="chart-box">
+              <h4>Mais Vendidos (Top 5)</h4>
+              <canvas id="topItemsChart"></canvas>
+            </div>
+          </div>
+
+          <div class="inventory-report">
+            <h4>
+              <i class="fas fa-exclamation-triangle"></i> Reposição Necessária
+            </h4>
+            <table class="report-table">
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Qtd Atual</th>
+                  <th>Mínima</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody id="lowStockBody"></tbody>
+            </table>
+          </div>
         </div>
       </main>
     </div>

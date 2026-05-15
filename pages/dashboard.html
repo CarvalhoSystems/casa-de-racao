@@ -14,12 +14,11 @@
     <link
       rel="icon"
       type="image/png"
-      href="../img/favicon-96x96.png"
+      href="/img/favicon-96x96.png"
       sizes="96x96"
     />
     <!--Swal para notificações-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  </head>
     <!-- Font Awesome para ícones -->
     <link
       rel="stylesheet"
@@ -75,7 +74,7 @@
             <li>
               <a href="/pages/clientes.html"
                 ><i class="fas fa-users"></i> Clientes</a
-                >
+              >
             </li>
             <li>
               <a href="/pages/relatorios.html"
@@ -91,20 +90,70 @@
         </nav>
       </aside>
 
-      <!-- Conteúdo Principal do Dashboard -->
+      <!-- No seu Main Content -->
       <main class="dashboard-main-content">
-        <h2>Visão Geral do Dashboard</h2>
-        <div class="dashboard-widgets">
-          <div class="widget">
-            <h3>Vendas Hoje</h3>
-            <p>R$ 1.250,00</p>
+        <header class="content-header">
+          <div class="welcome-text">
+            <h2>Painel de Controle</h2>
+            <p>
+              Bem-vindo de volta! Aqui está o resumo da sua Casa de Ração hoje.
+            </p>
           </div>
-          <div class="widget">
-            <h3>Novos Pedidos</h3>
-            <p>15</p>
+          <div class="date-display">
+            <i class="far fa-calendar-alt"></i>
+            <span id="current-date">13 de Maio, 2026</span>
           </div>
-          <!-- Adicione mais widgets conforme necessário -->
-        </div>
+        </header>
+
+        <!-- Seção de Kpis (Indicadores Chave) -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon sales">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Vendas Hoje</h3>
+              <p class="stat-value">R$ 1.250,00</p>
+              <span class="stat-trend up"
+                ><i class="fas fa-arrow-up"></i> 12%</span
+              >
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon orders">
+              <i class="fas fa-shopping-basket"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Novos Pedidos</h3>
+              <p class="stat-value">15</p>
+              <span class="stat-trend up"
+                ><i class="fas fa-arrow-up"></i> 5%</span
+              >
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stock">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="stat-info">
+              <h3>Estoque Baixo</h3>
+              <p class="stat-value">04</p>
+              <span class="stat-label">Itens para reposição</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Área de Gráficos ou Atividade Recente -->
+        <section class="dashboard-details">
+          <div class="chart-container">
+            <h3>Fluxo de Vendas (Semanal)</h3>
+            <div class="placeholder-chart">
+              <!-- Aqui você pode usar Chart.js no futuro -->
+            </div>
+          </div>
+        </section>
       </main>
     </div>
     <!-- Script JS para o dashboard (você precisará criar este arquivo) -->

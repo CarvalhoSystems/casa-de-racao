@@ -1,0 +1,30 @@
+/* Responsividade */
+@media (max-width: 1100px) {
+    .pos-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 80px 1fr;
+    }
+
+    .dashboard-sidebar nav a span,
+    .top-nav,
+    .user-profile span {
+        display: none;
+    }
+
+    .dashboard-sidebar nav a {
+        justify-content: center;
+        padding: 25px;
+    }
+
+    .pos-shortcuts {
+        left: 80px;
+    }
+}
+
+/* Adicione aqui media queries específicas para outros componentes, se necessário */
